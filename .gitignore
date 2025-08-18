@@ -1,0 +1,8 @@
+# Ignore data directory for sensitive information (challenge data, user data, etc.)
+**/data
+
+# Ignore configuration files that may contain sensitive information
+**/.todo
+
+# Ignore submission files that may contain sensitive information
+**/output
