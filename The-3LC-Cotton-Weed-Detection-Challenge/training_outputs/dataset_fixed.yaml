@@ -1,0 +1,9 @@
+names:
+  0: carpetweed
+  1: morningglory
+  2: palmer_amaranth
+nc: 3
+path: /kaggle/input/the-3lc-cotton-weed-detection-challenge/cotton_weed_competition_dataset
+test: test/images
+train: train/images
+val: val/images
