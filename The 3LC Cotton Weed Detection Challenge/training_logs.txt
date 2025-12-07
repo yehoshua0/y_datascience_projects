@@ -1,0 +1,405 @@
+======================================================================
+LOADING TABLES FOR TRAINING
+======================================================================
+
+✅ Training table loaded: 542 samples (latest version)
+✅ Validation table loaded: 133 samples (latest version)
+
+======================================================================
+✅ Tables Ready!
+======================================================================
+
+======================================================================
+YOLOV8N TRAINING WITH 3LC TRACKING
+======================================================================
+
+ Training Configuration:
+   Run name: yolov8n_baseline
+   Model: YOLOv8n (ONLY model allowed)
+   Epochs: 50
+   Batch size: 16
+   Image size: 640 (FIXED)
+   Device: GPU 0
+
+ Dataset:
+   Training: 542 samples
+   Validation: 133 samples
+
+======================================================================
+✅ CONFIGURATION COMPLETE!
+======================================================================
+
+💡 Configuration Summary:
+   • Tables loaded: 542 train, 133 val
+   • Run name: yolov8n_baseline
+   • Training for: 50 epochs
+   • Batch size: 16
+   • Device: GPU 0
+
+ Next: Run the cell below to start training!
+   (Review the configuration above before proceeding)
+======================================================================
+STARTING TRAINING
+======================================================================
+
+Loading YOLOv8n pretrained weights...
+✅ Model loaded (3M parameters, 6MB size)
+
+ Training in progress...
+======================================================================
+Using 3LC Trainer 🌟
+Ultralytics 8.3.192 🚀 Python-3.11.13 torch-2.6.0+cu124 CUDA:0 (Tesla T4, 15095MiB)
+engine/trainer: agnostic_nms=False, amp=True, augment=False, auto_augment=randaugment, batch=16, bgr=0.0, box=7.5, cache=False, cfg=None, classes=None, close_mosaic=10, cls=0.5, conf=None, copy_paste=0.0, copy_paste_mode=flip, cos_lr=False, cutmix=0.0, data=coco.yaml, degrees=0.0, deterministic=True, device=0, dfl=1.5, dnn=False, dropout=0.0, dynamic=False, embed=None, epochs=50, erasing=0.4, exist_ok=False, fliplr=0.5, flipud=0.0, format=torchscript, fraction=1.0, freeze=None, half=False, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, imgsz=640, int8=False, iou=0.7, keras=False, kobj=1.0, line_width=None, lr0=0.01, lrf=0.01, mask_ratio=4, max_det=300, mixup=0.0, mode=train, model=yolov8n.pt, momentum=0.937, mosaic=1.0, multi_scale=False, name=yolov8n_baseline, nbs=64, nms=False, opset=None, optimize=False, optimizer=auto, overlap_mask=True, patience=100, perspective=0.0, plots=True, pose=12.0, pretrained=True, profile=False, project=None, rect=False, resume=False, retina_masks=False, save=True, save_conf=False, save_crop=False, save_dir=runs/detect/yolov8n_baseline, save_frames=False, save_json=False, save_period=-1, save_txt=False, scale=0.5, seed=0, shear=0.0, show=False, show_boxes=True, show_conf=True, show_labels=True, simplify=True, single_cls=False, source=None, split=val, stream_buffer=False, task=detect, time=None, tracker=botsort.yaml, translate=0.1, val=True, verbose=True, vid_stride=1, visualize=False, warmup_bias_lr=0.1, warmup_epochs=3.0, warmup_momentum=0.8, weight_decay=0.0005, workers=4, workspace=None
+train: Using table /root/.local/share/3LC/projects/kaggle_cotton_weed_detection/datasets/cotton_weed_competition_dataset/tables/cotton_weed_competition_dataset-train1 from provided tables
+val: Using table /root/.local/share/3LC/projects/kaggle_cotton_weed_detection/datasets/cotton_weed_competition_dataset/tables/cotton_weed_competition_dataset-val1 from provided tables
+3lc: Created run named 'yolov8n_baseline' in project kaggle_cotton_weed_detection.
+3lc: Metrics will be collected after training only.
+Overriding model.yaml nc=80 with nc=3
+
+                   from  n    params  module                                       arguments                     
+  0                  -1  1       464  ultralytics.nn.modules.conv.Conv             [3, 16, 3, 2]                 
+  1                  -1  1      4672  ultralytics.nn.modules.conv.Conv             [16, 32, 3, 2]                
+  2                  -1  1      7360  ultralytics.nn.modules.block.C2f             [32, 32, 1, True]             
+  3                  -1  1     18560  ultralytics.nn.modules.conv.Conv             [32, 64, 3, 2]                
+  4                  -1  2     49664  ultralytics.nn.modules.block.C2f             [64, 64, 2, True]             
+  5                  -1  1     73984  ultralytics.nn.modules.conv.Conv             [64, 128, 3, 2]               
+  6                  -1  2    197632  ultralytics.nn.modules.block.C2f             [128, 128, 2, True]           
+  7                  -1  1    295424  ultralytics.nn.modules.conv.Conv             [128, 256, 3, 2]              
+  8                  -1  1    460288  ultralytics.nn.modules.block.C2f             [256, 256, 1, True]           
+  9                  -1  1    164608  ultralytics.nn.modules.block.SPPF            [256, 256, 5]                 
+ 10                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 11             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 12                  -1  1    148224  ultralytics.nn.modules.block.C2f             [384, 128, 1]                 
+ 13                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 14             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 15                  -1  1     37248  ultralytics.nn.modules.block.C2f             [192, 64, 1]                  
+ 16                  -1  1     36992  ultralytics.nn.modules.conv.Conv             [64, 64, 3, 2]                
+ 17            [-1, 12]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 18                  -1  1    123648  ultralytics.nn.modules.block.C2f             [192, 128, 1]                 
+ 19                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]              
+ 20             [-1, 9]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 21                  -1  1    493056  ultralytics.nn.modules.block.C2f             [384, 256, 1]                 
+ 22        [15, 18, 21]  1    751897  ultralytics.nn.modules.head.Detect           [3, [64, 128, 256]]           
+Model summary: 129 layers, 3,011,433 parameters, 3,011,417 gradients, 8.2 GFLOPs
+
+Transferred 319/355 items from pretrained weights
+Freezing layer 'model.22.dfl.conv.weight'
+AMP: running Automatic Mixed Precision (AMP) checks...
+Downloading https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11n.pt to 'yolo11n.pt': 100% ━━━━━━━━━━━━ 5.4/5.4MB 8.3MB/s 0.6s<0.1sss
+AMP: checks passed ✅
+train: Preparing data from /root/.local/share/3LC/projects/kaggle_cotton_weed_detection/datasets/cotton_weed_competition_dataset/tables/cotton_weed_competition_dataset-train1 542 images, 0 corrupt: 100% ━━━━━━━━━━━━ 542/542 493.1it/s 1.1s0.1s
+train: Fast image access ✅ (ping: 0.0±0.0 ms, read: 204.5±57.0 MB/s, size: 7267.2 KB)
+albumentations: Blur(p=0.01, blur_limit=(3, 7)), MedianBlur(p=0.01, blur_limit=(3, 7)), ToGray(p=0.01, method='weighted_average', num_output_channels=3), CLAHE(p=0.01, clip_limit=(1.0, 4.0), tile_grid_size=(8, 8))
+val: Preparing data from /root/.local/share/3LC/projects/kaggle_cotton_weed_detection/datasets/cotton_weed_competition_dataset/tables/cotton_weed_competition_dataset-val1 133 images, 0 corrupt: 100% ━━━━━━━━━━━━ 133/133 539.7it/s 0.2s0.1s
+val: Fast image access ✅ (ping: 0.0±0.0 ms, read: 152.4±82.2 MB/s, size: 7339.3 KB)
+Plotting labels to runs/detect/yolov8n_baseline/labels.jpg... 
+optimizer: 'optimizer=auto' found, ignoring 'lr0=0.01' and 'momentum=0.937' and determining best 'optimizer', 'lr0' and 'momentum' automatically... 
+optimizer: AdamW(lr=0.001429, momentum=0.9) with parameter groups 57 weight(decay=0.0), 64 weight(decay=0.0005), 63 bias(decay=0.0)
+Image sizes 640 train, 640 val
+Using 2 dataloader workers
+Logging results to runs/detect/yolov8n_baseline
+Starting training for 50 epochs...
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+Downloading https://ultralytics.com/assets/Arial.ttf to '/root/.config/Ultralytics/Arial.ttf': 100% ━━━━━━━━━━━━ 755.1/755.1KB 14.6MB/s 0.1s
+       1/50         2G      1.303      2.914      1.509         55        640: 100% ━━━━━━━━━━━━ 34/34 0.56it/s 1:01.4ssss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 1.8it/s 2.8s0.5s2s
+                   all        133        269    0.00623      0.738      0.281      0.192
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       2/50      2.51G      1.144      2.142       1.39         54        640: 100% ━━━━━━━━━━━━ 34/34 0.71it/s 48.0s.2s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.8it/s 1.8s0.3s
+                   all        133        269      0.601      0.374      0.421      0.242
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       3/50      2.52G      1.166      2.013      1.398         59        640: 100% ━━━━━━━━━━━━ 34/34 0.68it/s 49.7s.3ss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.8it/s 1.8s0.3s
+                   all        133        269      0.293      0.336      0.252      0.146
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       4/50      2.52G       1.09      1.787      1.356         48        640: 100% ━━━━━━━━━━━━ 34/34 0.65it/s 52.0s.9sss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.8it/s 1.8s0.3s
+                   all        133        269      0.479      0.289       0.31      0.145
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       5/50      2.54G      1.103      1.784      1.363         50        640: 100% ━━━━━━━━━━━━ 34/34 0.66it/s 51.6s.4sss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.8it/s 1.8s0.3s
+                   all        133        269      0.516       0.47      0.446      0.277
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       6/50      2.56G      1.112      1.711      1.358         69        640: 100% ━━━━━━━━━━━━ 34/34 0.67it/s 51.0s1.4ss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.7it/s 1.8s0.3s
+                   all        133        269      0.575      0.519      0.518      0.362
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       7/50      2.57G      1.045      1.578      1.333         40        640: 100% ━━━━━━━━━━━━ 34/34 0.67it/s 50.7s.4s5s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 3.3it/s 1.5s0.3s
+                   all        133        269      0.725      0.569      0.602      0.385
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       8/50      2.58G       1.04      1.491      1.332         38        640: 100% ━━━━━━━━━━━━ 34/34 0.69it/s 49.2s.3s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 3.5it/s 1.4s0.3s
+                   all        133        269      0.637      0.591      0.615      0.436
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       9/50      2.58G      1.021      1.443      1.306         43        640: 100% ━━━━━━━━━━━━ 34/34 0.67it/s 50.8s.3s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 3.1it/s 1.6s0.3s
+                   all        133        269      0.684      0.563      0.572       0.37
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      10/50      2.58G     0.9822      1.399       1.27         43        640: 100% ━━━━━━━━━━━━ 34/34 0.72it/s 47.3s.4sss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.7it/s 1.8s0.3s
+                   all        133        269      0.727      0.501      0.583      0.387
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      11/50      2.58G      1.016      1.411      1.295         61        640: 100% ━━━━━━━━━━━━ 34/34 0.66it/s 51.6s.3s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.7it/s 1.8s0.3s
+                   all        133        269      0.728      0.597      0.673      0.441
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      12/50      2.58G     0.9937      1.324      1.288         44        640: 100% ━━━━━━━━━━━━ 34/34 0.63it/s 54.0s.3s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.9it/s 1.7s0.3s
+                   all        133        269      0.803      0.644       0.71      0.503
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      13/50      2.58G     0.9516      1.258      1.238         43        640: 100% ━━━━━━━━━━━━ 34/34 0.65it/s 52.4s.3s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.8it/s 1.8s0.3s
+                   all        133        269      0.718      0.633      0.667      0.467
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      14/50      2.58G     0.9451      1.234      1.235         56        640: 100% ━━━━━━━━━━━━ 34/34 0.68it/s 49.7s.3ss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.7it/s 1.9s0.3s
+                   all        133        269       0.69      0.616       0.65      0.463
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      15/50      2.58G     0.9387      1.233      1.254         53        640: 100% ━━━━━━━━━━━━ 34/34 0.65it/s 52.7s.3ss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.8it/s 1.8s0.3s
+                   all        133        269      0.779      0.594      0.696      0.523
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      16/50      2.59G     0.9384      1.204      1.249         49        640: 100% ━━━━━━━━━━━━ 34/34 0.68it/s 50.1s.3ss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.9it/s 1.7s0.3s
+                   all        133        269      0.812      0.633      0.738      0.517
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      17/50      2.61G     0.9148      1.165      1.216         53        640: 100% ━━━━━━━━━━━━ 34/34 0.65it/s 52.6s.2ss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.8it/s 1.8s0.3s
+                   all        133        269      0.697      0.616      0.696      0.498
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      18/50      2.61G     0.9179      1.163      1.236         75        640: 100% ━━━━━━━━━━━━ 34/34 0.65it/s 52.5s.4sss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.9it/s 1.8s0.3s
+                   all        133        269      0.749      0.615      0.712      0.516
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      19/50      2.61G      0.874      1.082      1.193         59        640: 100% ━━━━━━━━━━━━ 34/34 0.66it/s 51.4s1.0ss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.7it/s 1.8s0.3s
+                   all        133        269      0.829        0.6      0.702      0.498
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      20/50      2.61G     0.8755      1.082      1.199         53        640: 100% ━━━━━━━━━━━━ 34/34 0.65it/s 52.1s.3ss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.8it/s 1.8s0.3s
+                   all        133        269      0.806      0.642      0.762      0.569
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      21/50      2.61G     0.8526      1.055      1.182         60        640: 100% ━━━━━━━━━━━━ 34/34 0.67it/s 51.0s.6s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.7it/s 1.8s0.3s
+                   all        133        269      0.775      0.645      0.736      0.542
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      22/50      2.61G     0.8603      1.049      1.182         48        640: 100% ━━━━━━━━━━━━ 34/34 0.65it/s 52.2s.3ss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.7it/s 1.9s0.3s
+                   all        133        269      0.712      0.686      0.752      0.525
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      23/50      2.61G     0.8396     0.9959      1.176         40        640: 100% ━━━━━━━━━━━━ 34/34 0.65it/s 52.2s.3s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 3.0it/s 1.7s0.3s
+                   all        133        269      0.713      0.691      0.737      0.525
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      24/50      2.61G     0.8448      1.045      1.179         36        640: 100% ━━━━━━━━━━━━ 34/34 0.65it/s 52.5s.3ss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.9it/s 1.7s0.3s
+                   all        133        269      0.806      0.651       0.75      0.513
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      25/50      2.61G     0.8735      1.002      1.191         65        640: 100% ━━━━━━━━━━━━ 34/34 0.69it/s 49.1s.2s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.9it/s 1.8s0.3s
+                   all        133        269      0.757      0.632      0.728      0.548
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      26/50      2.61G     0.8139     0.9557      1.171         49        640: 100% ━━━━━━━━━━━━ 34/34 0.67it/s 51.0s.3ss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 3.2it/s 1.6s0.2s
+                   all        133        269       0.78      0.692      0.781      0.611
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      27/50      2.61G     0.8216     0.9335      1.166         59        640: 100% ━━━━━━━━━━━━ 34/34 0.67it/s 51.1s.3s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 3.3it/s 1.5s0.2s
+                   all        133        269      0.792      0.695      0.795      0.606
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      28/50      2.61G      0.811     0.9427      1.153         48        640: 100% ━━━━━━━━━━━━ 34/34 0.67it/s 50.6s.3s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 3.2it/s 1.6s0.2s
+                   all        133        269      0.716      0.685      0.759      0.565
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      29/50      2.61G     0.8053     0.9479      1.167         48        640: 100% ━━━━━━━━━━━━ 34/34 0.68it/s 49.8s.4s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 3.8it/s 1.3s0.2s
+                   all        133        269      0.812      0.642      0.768      0.582
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      30/50      2.61G     0.7592      0.892      1.123         57        640: 100% ━━━━━━━━━━━━ 34/34 0.68it/s 50.3s.3s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 3.9it/s 1.3s0.2s
+                   all        133        269      0.696      0.741      0.796      0.601
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      31/50      2.61G        0.8     0.8917      1.156         58        640: 100% ━━━━━━━━━━━━ 34/34 0.68it/s 50.1s.4sss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.9it/s 1.7s0.3s
+                   all        133        269      0.782      0.697      0.773      0.565
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      32/50      2.61G     0.7526     0.8562      1.111         49        640: 100% ━━━━━━━━━━━━ 34/34 0.66it/s 51.7s.3s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.7it/s 1.8s0.2s
+                   all        133        269      0.851      0.626      0.769      0.592
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      33/50      2.61G     0.7575     0.8357      1.125         62        640: 100% ━━━━━━━━━━━━ 34/34 0.68it/s 50.1s.4sss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.8it/s 1.8s0.3s
+                   all        133        269      0.849      0.626      0.779      0.603
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      34/50      2.61G     0.7378     0.8403      1.105         53        640: 100% ━━━━━━━━━━━━ 34/34 0.67it/s 50.7s.6sss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.9it/s 1.7s0.3s
+                   all        133        269      0.776      0.695      0.778      0.589
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      35/50      2.61G     0.7183     0.8143      1.104         52        640: 100% ━━━━━━━━━━━━ 34/34 0.65it/s 52.0s.3sss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.8it/s 1.8s0.3s
+                   all        133        269      0.769      0.716      0.779      0.584
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      36/50      2.63G     0.7551      0.813      1.116         51        640: 100% ━━━━━━━━━━━━ 34/34 0.66it/s 51.6s.3s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.9it/s 1.7s0.2s
+                   all        133        269      0.862      0.668      0.791      0.592
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      37/50      2.64G     0.7279     0.8113       1.11         59        640: 100% ━━━━━━━━━━━━ 34/34 0.65it/s 52.2s.3ss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.9it/s 1.7s0.2s
+                   all        133        269      0.827      0.706      0.808      0.606
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      38/50      2.64G     0.7064      0.774      1.083         56        640: 100% ━━━━━━━━━━━━ 34/34 0.64it/s 52.8s.3ss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.8it/s 1.8s0.3s
+                   all        133        269      0.858      0.659      0.791      0.598
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      39/50      2.64G     0.6854      0.756      1.091         56        640: 100% ━━━━━━━━━━━━ 34/34 0.64it/s 52.7s.3ss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.9it/s 1.7s0.3s
+                   all        133        269       0.79      0.691      0.792      0.627
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      40/50      2.64G     0.6824     0.7404      1.072         57        640: 100% ━━━━━━━━━━━━ 34/34 0.66it/s 51.4s.3s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.8it/s 1.8s0.3s
+                   all        133        269      0.833      0.672      0.784      0.595
+Closing dataloader mosaic
+albumentations: Blur(p=0.01, blur_limit=(3, 7)), MedianBlur(p=0.01, blur_limit=(3, 7)), ToGray(p=0.01, method='weighted_average', num_output_channels=3), CLAHE(p=0.01, clip_limit=(1.0, 4.0), tile_grid_size=(8, 8))
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      41/50      2.64G     0.5972     0.7117          1         28        640: 100% ━━━━━━━━━━━━ 34/34 0.62it/s 54.5s.9ss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.9it/s 1.7s0.2s
+                   all        133        269      0.787      0.687      0.764       0.57
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      42/50      2.64G     0.5686     0.6638      0.981         40        640: 100% ━━━━━━━━━━━━ 34/34 0.63it/s 54.2s.3ss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 3.2it/s 1.6s0.3s
+                   all        133        269      0.817      0.681       0.76      0.576
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      43/50      2.64G     0.5478     0.6254     0.9742         17        640: 100% ━━━━━━━━━━━━ 34/34 0.70it/s 48.7s.2s4s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.9it/s 1.7s0.3s
+                   all        133        269      0.846      0.659      0.773       0.59
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      44/50      2.64G     0.5357     0.5831     0.9694         16        640: 100% ━━━━━━━━━━━━ 34/34 0.67it/s 50.6s.3s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.9it/s 1.7s0.3s
+                   all        133        269        0.9      0.647      0.798      0.615
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      45/50      2.64G     0.5198      0.557     0.9486         34        640: 100% ━━━━━━━━━━━━ 34/34 0.67it/s 50.6s.5sss
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.9it/s 1.7s0.2s
+                   all        133        269      0.878      0.641      0.799      0.629
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      46/50      2.64G     0.5369     0.5758     0.9746         22        640: 100% ━━━━━━━━━━━━ 34/34 0.63it/s 54.0s.3s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 3.3it/s 1.5s0.3s
+                   all        133        269      0.833      0.668      0.792      0.619
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      47/50      2.64G     0.5062     0.5455     0.9342         25        640: 100% ━━━━━━━━━━━━ 34/34 0.67it/s 50.6s.5s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.9it/s 1.7s0.3s
+                   all        133        269      0.863      0.684      0.796      0.625
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      48/50      2.64G     0.5227      0.569     0.9426         23        640: 100% ━━━━━━━━━━━━ 34/34 0.65it/s 52.6s.4s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 3.6it/s 1.4s0.2s
+                   all        133        269      0.783       0.72      0.798      0.626
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      49/50      2.64G     0.4964     0.5222      0.922         19        640: 100% ━━━━━━━━━━━━ 34/34 0.66it/s 51.8s.3s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 3.8it/s 1.3s0.2s
+                   all        133        269      0.828      0.682      0.803      0.625
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      50/50      2.64G     0.5217     0.5259     0.9519         29        640: 100% ━━━━━━━━━━━━ 34/34 0.66it/s 51.2s1.1s
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.8it/s 1.8s0.3s
+                   all        133        269      0.836      0.678      0.803      0.629
+
+50 epochs completed in 0.748 hours.
+val: Loaded cached images.
+val: Fast image access ✅ (ping: 0.0±0.0 ms, read: 1735.3±866.1 MB/s, size: 4769.4 KB)
+Ultralytics 8.3.192 🚀 Python-3.11.13 torch-2.6.0+cu124 CUDA:0 (Tesla T4, 15095MiB)
+Model summary (fused): 72 layers, 3,006,233 parameters, 0 gradients, 8.1 GFLOPs
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 17/17 0.31it/s 54.0s2.7s
+                   all        542        969       0.96      0.912       0.97       0.87
+            carpetweed        183        391      0.948      0.854       0.95      0.819
+          morningglory        245        308      0.973      0.927      0.978      0.907
+       palmer_amaranth        159        270       0.96      0.956      0.984      0.884
+Speed: 0.2ms preprocess, 3.2ms inference, 0.0ms loss, 1.2ms postprocess per image
+Results saved to runs/detect/yolov8n_baseline
+Optimizer stripped from runs/detect/yolov8n_baseline/weights/last.pt, 6.2MB
+Optimizer stripped from runs/detect/yolov8n_baseline/weights/best.pt, 6.2MB
+
+Validating runs/detect/yolov8n_baseline/weights/best.pt...
+Ultralytics 8.3.192 🚀 Python-3.11.13 torch-2.6.0+cu124 CUDA:0 (Tesla T4, 15095MiB)
+Model summary (fused): 72 layers, 3,006,233 parameters, 0 gradients, 8.1 GFLOPs
+cotton_weed_competition_datasetes  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 1.3it/s 3.9s<1.1s
+                   all        133        269      0.836      0.678      0.803      0.629
+            carpetweed         44        110      0.803      0.554      0.716      0.507
+          morningglory         54         70      0.899      0.829       0.89       0.73
+       palmer_amaranth         51         89      0.808      0.652      0.802      0.651
+Speed: 0.2ms preprocess, 3.8ms inference, 0.0ms loss, 3.8ms postprocess per image
+Results saved to runs/detect/yolov8n_baseline
+3lc: Reducing image embeddings to 2D with pacmap, this may take a few minutes...
+WARNING 3lc: Encountered problem when reducing embeddings: '_LazyModule' object has no attribute 'PaCMAP'
+
+======================================================================
+✅ TRAINING COMPLETE!
+======================================================================
+
+📁 Model Weights Saved:
+   Best model: runs/detect/yolov8n_baseline/weights/best.pt
+   Last model: runs/detect/yolov8n_baseline/weights/last.pt
+
+ Use 'best.pt' for predictions and submissions (highest validation mAP)
+
+ Next Steps:
+   1. Visit 3LC Dashboard: https://dashboard.3lc.ai/
+   2. Open your Run to analyze model errors
+   3. Identify data issues:
+      • False negatives (missed detections)
+      • False positives (incorrect predictions)
+      • Class confusion
+      • Poor localization
+   4. Fix data issues in Dashboard
+   5. Retrain with improved data!
+
+Learn more: https://docs.3lc.ai/3lc/latest/how-to/basics/open-project-table-run.html
